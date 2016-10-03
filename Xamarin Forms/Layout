@@ -1,0 +1,62 @@
+ContentPage displays a single piece of content.
+Using NavigationPage, we can achieve displaying multiple pages.
+
+To display multiple views, Layout container must be used.
+
+Different child views are added into the layout container.
+Instead of using coordinates, layout containers are used to control how the views are positioned relative to each other.
+This provides more adaptive layout which is not sensitive to dimensions and resolutions.
+
+eg of layout containers - StackLayout,Grid,AbsoluteLayout,RelativeLayout,ScrollView,ContentView,Frame
+
+Multiple Children - StackLayout,Grid, AbsoluteLayout,RelativeLayout
+Single Children - ScrollView,ContentView,Frame
+
+StackLayout - It organizes the content either horizontally or vertically using the Orientation property.
+              Default Orientation is vertical.
+
+AbsoluteLayout - defines pixel positioning where the exact position of the view is defined.
+                 It supports proportional positions and sizes.
+
+RelativeLayout - It allows to define the postion and size of each child using relationship based on the container.
+                 The position and size are calculated at runtime using delegates that are supplied in the form of 
+                 constraints. The constraints can be fixed values, dynamically calculated values,relative to the container or 
+                 sibling.
+
+Grid -  It organizes the children/views in a table format.  
+
+ScrollView - It provides scrollable container. If the single piece of content is larger than the viewable area, ScrollView 
+             provides horizontal or vertical scrolling or both.
+
+Each layout container has a children property. The views are added or removed to this property. The order in which the views
+appear in this collection determine how they are drawn and appear on the screen.
+
+Properties of a view
+HeightRequest - used to request specific height for a view inside a parent container.
+WidthRequest - used to request specific width for a view inside a parent container.
+
+Properties of a layout
+Spacing - used in StackLayout and Grid to add spacing between children
+Padding - used to add padding around children. mainPage.Padding = new Thickness(5,20,5,5)
+Orientation - used to specify the direction of content - left to right ie horizontal or top to bottom ie vertical.
+
+ATTACHED PROPERTY : Grid.Row is an example of attached property. The view (button/label) doesnt have a row property.
+                    But it can look for the Grid property and that in turn can fetch the row property.
+
+VALUE CONVERTER : BackgroundColor = "White" or BackgroundColor = "#FFF"
+                  The value converter at compile time converts the values assigned into appropriate instance.
+
+MARKUPEXTENSIONS: Style = "{StaticResource ButtonStyle}" Text="{Binding TxtDesc}"
+                  At run the code executes           
+
+AbsoluteLayout - When you want fix the position or size of a view or in proportion 
+                 1) create <AbsoluteLayout>
+                 2) Create a view and specify attribute, AbsoluteLayout.LayoutBounds
+                 3) TO do proportional layout, specify the AbsoluteLayout.LayoutFlags (PositionProtional,sizeproportional)                      
+                
+RelativeLayout - A Relative Layout is useful…for creating adaptive layout, where the UI adjusts…to the changes 
+                 in screen rotation and screen sizes.…Use it to layout UI elements based on their parent's…position
+                 and dimensions, as well as other…views, positions and dimensions.
+                 Another key benefit of the Relative Layout…is the ability to overlap, or layer, UI elements.
+
+  

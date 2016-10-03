@@ -1,0 +1,9 @@
+XF uses native control on each platform to render UI - TRUE
+
+App.cs - decides the initial screen for the application
+
+Forms.Init is called before using Xamarin Forms.
+
+To supply the initial page of XF app, the Applicaiton.MainPage property must be set.
+
+Controls not available in Xamarin Forms - ListBox.

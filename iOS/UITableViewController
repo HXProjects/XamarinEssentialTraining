@@ -1,0 +1,68 @@
+1) Add UITableView to a UIViewController Or use UITableViewController
+2) UITableView has a Source property which will accept object of type UITableViewSource
+3) Create a class derived from UITableViewSource
+   --override classes of UITableViewSource like GetCell(),NumberOfSections(),RowsInSection()
+4) Create object of class UITableView and populate some data in it
+5) Assign this object to the UITableView.Source property.
+
+How to perform swipt delete?
+1) Override CommitEditingStyle() of the class UITableViewSource.
+2) One of the param of this method is UITableViewCellEditingStyle
+3) Check the value of this param, if its UITableViewCellEditingStyle.Delete then write the custome
+   delete code
+
+What happens in GetCell() ?
+
+ UITableView has a method DequeResusableCell(cellID) - it returns resuable table view cell that was created
+   with the given cellID.
+
+var cell = tableView.DequeResusableCell("CustomCellID") as PatientTableViewCell;
+if(cell =null)
+    cell = PatientTableViewCell.Create();
+
+1) We first try to get the resuable table view cell. 
+2) If DequeResusableCell(cellID) returns null then we create a new cell with the cellID
+3) The return type of the DequeResusableCell() can either UITableViewCell or a custom class derived from UITableViewCell
+4) Based on the customer cell object, assign each property and finally return the cell.
+
+ADDING AN INDEX
+
+ Each item in the index corresponds to a ‘section’ of the table.To support ‘sections’ the data behind the table needs 
+ to be grouped. Create a Dictionary<> from the array of strings using the first letter of each item as the dictionary key:
+
+1) Create a dictionary object from List object data Source
+    indexedTableItems = new Dictionary<string, List<string>>();
+    foreach (var t in items) {
+        if (indexedTableItems.ContainsKey (t[0].ToString ())) {
+            indexedTableItems[t[0].ToString ()].Add(t);
+        } else {
+            indexedTableItems.Add (t[0].ToString (), new List<string>() {t});
+        }
+    }
+    keys = indexedTableItems.Keys.ToArray ();
+
+2) Modify/Add following UITableViewSource methods -- NumberOfSections(),RowsInSection() and SectionIndexTitles()
+public override nint NumberOfSections (UITableView tableView)
+{
+     return keys.Length;
+}
+public override nint RowsInSection (UITableView tableview, nint section)
+{
+    return indexedTableItems[keys[section]].Count;
+}
+public override string[] SectionIndexTitles (UITableView tableView)
+{
+    return keys;
+}
+
+ADD HEADER AND FOOTER
+
+1) Implment UITableViewSource methods - TitleForHeader() and TitleForFooter()
+    public override string TitleForHeader (UITableView tableView, nint section)
+    {
+        return keys[section];
+    }
+    public override string TitleForFooter (UITableView tableView, nint section)
+    {
+        return indexedTableItems[keys[section]].Count + " items";
+    }

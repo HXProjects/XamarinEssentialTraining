@@ -1,0 +1,37 @@
+Xamarin.iOS exposes events in two ways -
+    1) via user controls
+        e.g: UIButton class has an event TouchUpInside
+    2) Apples way of delegates & protocols
+        Delegates in objective-c are similar in concept to c# delegates but instead of defining and calling a method,
+        a delegate in objective-c is an entire class that conform to a protocol.
+
+What is a protocol?
+A protocol is an Objective-C language feature that provides a list of method declarations.
+A protocol is like c# interface except that its methods can be optional.
+a single class in Objective-C can implement multiple protocols, just as a C# class can implement multiple interfaces.
+
+e.g: To populate UITableView with data, we have to create a delegate class that implements methods from UITableViewDatasource 
+
+So how does C# maps a protocol?
+Since C# interfaces don’t support optional methods, Xamarin.iOS maps protocols to abstract classes.
+ Therefore, adopting a protocol in Objective-C is accomplished in Xamarin.iOS by deriving from the abstract class
+ that is bound to the protocol and implementing the required methods. These methods will be exposed as abstract methods 
+ in the class. Optional methods from the protocol will be bound to virtual methods of the C# class.
+
+eg: UITableViewDatasource is an abstract class which has GetCell() as an abstract method and NumberOfSections() as
+a virtual method.
+
+ Objective-c can inherit multiple protocol..how c# simulate this behaviour?
+
+
+Events
+
+Handle more than one event for the same eventhandler method:
+button.AddTarget (handler, UIControlEvent.TouchDown | UIControlEvent.TouchCancel);
+
+Strong Delegates & Weak Delegates
+
+Strong Delegates - strongly typed delegates. A custom class is created using UITableViewSource. 
+
+Weak Delegates - Instead a subclassing a class bound to a protocol, a protocol method can be bound to any class 
+decorating the method with ExportAttribute.

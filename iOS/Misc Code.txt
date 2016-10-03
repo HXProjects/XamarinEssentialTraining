@@ -1,0 +1,48 @@
+
+What happens in FinishedLaunching?
+1) window object is created
+        window = new UIWindow(UIScreen.MainScreen.Bounds)
+2) navigationcontroller is created
+        navC = new UINavigationController()
+3) UIViewcontroller is created - first view
+        loginScreen = new LoginScreenUIViewController()
+4) loginScreen is pushed to the navigationcontroller
+        navC.PushViewController(loginScreen,false)
+5) navigationcontroller is set as the rootviewcontroller of the window
+        window.RootViewController = nacC
+##################################################################################################################
+
+var defaults = NSUserDefaults.StandardUserDefaults;
+STORAGE -  defaults.SetString("value","key")'
+
+RETRIEVAL - if(!string.IsNullOrEmpty(defaults.StringForKey("key"))
+                txt storedStr = defaults.StringForKey("key")
+###################################################################################################################
+How to check internet connectivity?
+Reachability static class is available. Included it my project.
+To check internet connection, i called the static method, InternetConnectionStatus() from the class.
+This class returns NetworkStatus (enum for NotReachable,RechableViaCarrierNetwrk,ReachableViaWifiNetwork)
+i check the return value, it shuld not be "NotReachable"
+
+###################################################################################################################
+UIApplication.SharedApplication.OpenUrl(url) - opens whatever is mentioned url - it can be phone dialler or websit
+
+Foundation.NSUrl url
+private void CallNumber(string phonenum)
+{
+    url = new Foundation.NSUrl("tel:" + phone);
+
+    var alert = UIAlertController.Create("Alert","Sim call to :" + phonenum,UIAlertControllerStyle.Alert);
+
+    alert.AddAction(UIAlertAction.Create("Ok",UIAlertActionStyle.Default,MAkeCall(url)));
+    alert.AddAction(UIAlertAction.Create("Cancel",UIAlertActionStyle.Cancel,null));
+    PresentViewControler(alert,true,null);
+}
+
+private void MakeCall(UIAlertAction action)
+{
+    UIApplication.SharedApplication.OpenUrl(url)
+}
+
+
+

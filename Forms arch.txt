@@ -1,0 +1,36 @@
+In the PCL, App class, assign the mainpage property of Applicaiton class to instance of the page.
+
+In Android, in the mainactivity class, derived from global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+in the oncreate method, do below two steps:
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new App());
+
+In iOS, derive appdelegate class from global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+In the FinishedLaunching method do below 
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+
+#####################################################################################################
+SharedPrefrences in Android
+1) ISharedPreferences prefs;
+2) var editor = prefs.Edit();
+3) editor.PutString(key, value);
+4) editor.Apply();
+#####################################################################################################
+Dependency Service
+1) Create an Interface in the PCL class - eg: ISettingService which has a AddSettings() method declared.
+2) In platform project, implement the ISettingService  interface in a class
+3) In class implementation, declare assembly  level attribute:
+   [assembly: Xamarin.Forms.Dependency(typeof(NAMEOFCLASS))]
+4) In this class implement the AddSettings() method
+5) Back in the PCL project, use below to call the platform specific implementation of the interface
+   DependencyService.Get<ISettingService>().AddOrUpdateSetting<string>("userName", userNameText.Text);
+#####################################################################################################
+
+XAML 
+<ContentPage>
+	<ContentPage.Content>
+		<StackLayout/>
+	</ContentPage.Content>
+</ContentPage>
+

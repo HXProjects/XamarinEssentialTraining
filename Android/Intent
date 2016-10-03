@@ -1,0 +1,32 @@
+ iOTBtn.Click += async(sender, e) => {
+
+                SAL.Services sal = new SAL.Services();
+                string iOTData = await sal.GetIOTData();
+
+                var intent = new Intent(this, typeof(iOTSensorActivity));
+                intent.PutExtra("iOTData", iOTData);
+                StartActivity(intent);
+};
+
+protected override void OnCreate(Bundle savedInstanceState)
+{
+    base.OnCreate(savedInstanceState);
+    iOTModel iotData = JsonConvert.DeserializeObject<iOTModel>(Intent.GetStringExtra("iOTData"));
+
+    BarChart.BarModel[] obj = new BarModel[3];
+
+    obj[0] = new BarModel { Value = iotData.sensor_datas[0].temp, Color = Color.Yellow, Legend = "Light",  ValueCaptionHidden = false, ValueCaption = CalcPercentage(iotData.sensor_datas[0].temp)};
+    obj[1] = new BarModel { Value = iotData.sensor_datas[0].humidity, Color = Color.Orange, Legend = "Humidity", ValueCaptionHidden = false, ValueCaption = CalcPercentage(iotData.sensor_datas[0].humidity) };
+    obj[2] = new BarModel { Value = iotData.sensor_datas[0].moisture, Color = Color.Aqua, Legend = "Moisture", ValueCaptionHidden = false, ValueCaption = CalcPercentage(iotData.sensor_datas[0].moisture) };
+    
+
+    var chart = new BarChartView(this)
+    {
+        ItemsSource = obj
+    };
+
+    AddContentView(chart, new ViewGroup.LayoutParams(
+        ViewGroup.LayoutParams.FillParent, ViewGroup.LayoutParams.FillParent));
+    
+}
+

@@ -1,0 +1,27 @@
+macincloud - provides macs on rent cloud service
+
+Explain MVC for iOS mobile app.
+ iOS uses a version of the classic Model View Controller or MVC pattern tweaked for the mobile screen. 
+ How does that work in practice? 
+ Well, an iOS app has a single window but can consist of one or more screens.
+  The UI for a screen consists of one or more views. 
+  The data and state for your app comes from the models. 
+  Managing the app screens is complex and requires responding to user input and changes in the model.
+
+The management and coordination between views and models is the job of a UI View Controller. This template ships with a single example of a View Controller
+
+view of MVC - mainstoryboard and Launchscreen.xib
+
+AppDelegate is derived from UIApplicaitonDelegate. AppDelegate is responsible for launching the UI and also listen 
+to app events from os.
+
+2 .plist files: Info.plist and Entitlements.plist.
+
+Info.plist contains applicaiton configuration data. eg: app name,devices to support, app orientation etc
+Entitlements.plist is used to store special app capabilities like enabling health or home kit.
+
+
+AUTO LAYOUT - ADAPTIVE LAYOUT
+achieved using constraints. 
+auto layout ensures that the control position and sizes work correctly when switching between landscape and portrait mode 
+and also when showing the uI in different screen sizes. 

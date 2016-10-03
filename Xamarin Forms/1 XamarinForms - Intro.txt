@@ -1,0 +1,47 @@
+When to use Xamarin.Forms?
+1) Enterprise apps mostly containing of data Forms
+2) If you want to quickly demo an app - prototyping
+3) If app depends too much on native ui control or apis, avoid XF
+4) If app uses too much pixel perfect design, avoid XF
+
+
+DEVELOPMENT MODEL
+
+In traditional Xamarin development, we share our business logic in the form of a Portable Class Library (PCL) or a Shared Project (SAP). This can include:
+    View Models
+    Validation logic
+    Data Models
+    Data access code
+    Web Service access code
+The User Interface (UI) is then defined using platform-specific techniques, either in code, or more typically, through a designer or some form of markup.
+These two things (logic and UI) are then combined to produce an application specific for the platform.
+
+Xamarin.Forms is a set of libraries that provides a shared UI surface for iOS, Android and Windows:
+    Allows you to define the UI using a common set of controls
+    Modeled after WPF and Silverlight, supports XAML, Data Binding, Styles and more
+    Great for data-entry (Forms) apps and for prototyping
+    Provides a higher level of code sharing than the traditional approach
+    Generates fully native UI so it looks and feels natural to each platform
+    Can leverage platform-specific APIs when necessary
+    Can customize the UI for each platform (although limited in places)
+
+However, it also has drawbacks:
+    Not all controls are available; only controls which exist in all three platforms and are defined by Xamarin.Forms are supported
+    It's more difficult to leverage custom UI features
+    Since layout is managed directly by Xamarin.Forms, pixel-perfect designs are hard to replicate
+
+How much code is shared using traditional Xamarin development?
+The actual percentage is going to depend on how complex the application happens to be, and how many of the platform features your app uses.
+However, in most applications you end up sharing about 75% of the code.
+
+How much code is shared using Xamari.Forms?
+The actual percentage is going to depend on how complex the application happens to be, and how many of the platform specific features your app uses.
+However, using Xamarin.Forms, it is possible to share over 90% of the code.    
+
+Why would I choose the traditional Xamarin approach?
+Utilizing the native platform-APIs allows your application to integrate completely with the platform. 
+This has several advantages:
+    You can use any feature of the platform
+    All of the UI widgets are available
+    Your application looks, feels and behaves like any other native app
+

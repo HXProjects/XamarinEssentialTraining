@@ -1,0 +1,17 @@
+Xamarin Android Development
+    SDK : Android SDK
+    Code: C#
+    UI: Defined in XML files
+    IDE: Xamarin Studio of Visual Studio
+
+MainActivity derived from Activity class
+Navigation? - startactivity(typeof(classname))...any other ways?
+
+wrap_content - means height/width of the control/view will be just enough to contain the content on it (Text of a button)
+match_parent - means height/width will be equivalent to the height of the container.
+layout_gravity - align control - left,right,center
+
+Benefit of string.xml - add localization or add extra language support.
+
+Intent - an asynchronous message to the operating system handled by android runtime.    
+There are many kinds of intents. eg: ActionCall - makes the phone call action.

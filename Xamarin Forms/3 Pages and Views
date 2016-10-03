@@ -1,0 +1,22 @@
+App class creates atleast one page which represent single screen of the app.
+
+A page can contains several control for user interactions - they are called views. Entry,Button label etc are all views.
+
+eg. of a page: ContentPage
+
+ContentPage is a class that holds single piece of content assigned through its property name Content.
+
+MasterDetails class is another page which has two props - Master and Detail
+
+NavigationPage enables the typical stack based navigation with the navigation bar header.
+The constructor of this page takes the initial child page to display.
+eg: var np = new NavigationPage(new Employee());
+
+Other egs of pages - TabbedPage,CarouselPage
+
+The XF controls are just a model definition. At runtime, each platform will take the object graph that will be created 
+and turn it into the native representation. The peice of code that does this RENDERER.
+eg: if we create a XF button and set the text property to click me, the iOS Renderer converts this to native iOS UIButton 
+control
+
+

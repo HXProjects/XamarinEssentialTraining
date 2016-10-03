@@ -1,0 +1,28 @@
+There are two types you will work with in the cross platform code to build the XF app:
+        The Application class
+        The Pages
+
+The Application class is the cross platform entry point to the application.
+It is located/found and used by the platform specific code to initialize the application.
+The project template will always create a derived class from Application type.
+It will point to the first page of the application.
+
+The Pages is used to display single screen to the user.
+It defines the UI in code or markup and provides behaviour for the screen
+The application class will identify starting page through a property. (MainPage)
+
+Events which are raised as navigation happens in application.
+
+App class can override the lifecycle methods that are derived from Application class.
+There are three methods:
+    OnStart()
+    OnSleep()
+    OnResume()
+
+OnStart - When the app is launched and it was not running.
+          Use it to load data from persistent storage,hit webservice to cache off data
+
+OnSleep - Called when app was active and user swithes to another app.
+          Can be used to refresh data that is already available on screen.
+        
+OnResume - ?

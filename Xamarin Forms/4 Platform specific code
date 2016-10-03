@@ -1,0 +1,35 @@
+XF doesnt have platform specific APIs. It has PCL + API to fine tune the UI per platform basis
+
+The built in API for UI has two variations:
+    1) Device.OnPlatform
+    2) Device.OnPlatform<T>
+
+Device.OnPlatform - It has four delegates methods - one for each platform and one for default case if you dont supply
+                    platform specific code.
+                    Each parameter defaults to null.
+                    This style allows you to execute a block of code uniquely based on the platform the app is running.
+
+Device.OnPlatform<T> - It takes 3 T parameters and returns a T.
+                       The 3 parameters correspond to iOS,Android and Windows.
+                       there is no default parameter.
+                       All the 3 values must be supplied.
+
+                       This method is useful if you want to change the property based on the platform.
+                       eg: we adjust the top of Thickness class based on iOS platform to return only 20 for that platform.
+                       We put this code in the shared code but making it execute only on iOS.
+
+Important features exposed by Xamarin.Forms
+    Device - Its a static class that has several methods used for invoking platform specific functionality.
+    eg:    Device.OnPlatform
+           Device.iOS - to identify the platform
+           Device.Idiom - to identify the footprint.
+           Device.OpenURI - used commonly on all platforms - used to open URI using platform handler.
+           Device.StartTime - to create timer.
+           Device.BeginInvoke - 
+           Page.DisplayAlertInstance - displays 2 button modal message box
+           Page.DisplayActionSheet
+
+Dependency Service: XF has a service locator called Dependency service which is used to register platform specific  
+                    implementations and locate them through abstractions in our shared code.
+
+MessaginCenter: XF build in subscribe event system. Page uses this display alert message and sheet.                    

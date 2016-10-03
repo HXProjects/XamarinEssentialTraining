@@ -1,0 +1,18 @@
+1) in shared code, create an interface.
+2) In the implementation class in the platform, add an assembly level attribute
+    [assembly: Dependency(typeof(classNAME))]
+3) The Dependency service provides a static method, Get<T> which provides the platform specific implementation of an interface.
+    async void OnCall(object sender, System.EventArgs e)
+    {
+    if (await this.DisplayAlert(
+        "Dial a Number",
+        "Would you like to call " + translatedNumber + "?",
+        "Yes",
+        "No")) {
+
+        var dialer = DependencyService.Get<IDialer>();
+        if (dialer != null) {
+            dialer.Dial(translatedNumber);
+        }
+        }
+    }

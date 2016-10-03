@@ -1,0 +1,36 @@
+HTTP GET 
+1) Create a HttpWebRequest : request
+2) Specify the request method : request.Method = "Get"
+3) Get the WebResponse from the HttpWebRequest
+    WebResponse response = await request.GetResponseAsync()
+4) Using streamreader, read the response string.
+        using (var responseStream = response.GetResponseStream())
+        {
+            using (var sr = new StreamReader(responseStream))
+            {
+                returnString = await sr.ReadToEndAsync();
+            }
+        }
+5) Deserialize the response string using JSonconvert.Deserialize
+    RootObject personObj = (RootObject)JsonConvert.DeserializeObject(responseString, typeof(RootObject));
+
+
+OR USe HTTPClient method..GetStringAsync(url)
+
+XML DESERIALIZATION
+        XmlSerializer serializer = new XmlSerializer(typeof(T));
+        using (StringReader rdr = new StringReader(url))
+        {
+            obj = (T)serializer.Deserialize(rdr);
+        }
+
+HTTP POST
+1) Create a HttpWebRequest : request
+2) Specify the request method : request.Method = "POST"
+3) The object to be uploaded should be converted to byte[]
+4) From HttpWebRequest object, get the request stream.
+    Stream requestWriter = requestWriter = await request.GetRequestStreamAsync();
+5) Write the byte[] to this stream.    
+    byte[] data = Encoding.UTF8.GetBytes(dataToUpload);
+    requestWriter.Write(data, 0, data.Length);
+6) From HttpWebRequest object, get response object -  read this stream and fetch the strning.

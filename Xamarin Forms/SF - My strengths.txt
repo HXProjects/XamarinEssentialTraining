@@ -1,0 +1,9 @@
+1) XF Arch - How app runs
+2) Concept of ContentPage
+3) Concept of layout
+4) Dependency service
+5) Static Resource
+6) SharedPreference for Android
+7) DataBinding
+8) ObservableCollection
+9) MVVM
