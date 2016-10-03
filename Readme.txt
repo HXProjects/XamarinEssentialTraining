@@ -1,0 +1,1 @@
+This git repo contains all materials essential for Xamarin training.
